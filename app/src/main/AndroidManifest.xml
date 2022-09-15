@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.micoder.globofly">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,15 +15,44 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GloboFly"
         tools:targetApi="31">
+
         <activity
-            android:name=".MainActivity"
+            android:name="com.micoder.globofly.activities.DestinationListActivity"
+            android:label="Destination List"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+
+        <activity
+            android:name="com.micoder.globofly.activities.DestinationDetailActivity"
+            android:label="Destination Detail"
+            android:parentActivityName="com.micoder.globofly.activities.DestinationListActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.micoder.globofly.activities.DestinationListActivity" />
+        </activity>
+
+        <activity
+            android:name="com.micoder.globofly.activities.DestinationCreateActivity"
+            android:label="New Destination"
+            android:parentActivityName="com.micoder.globofly.activities.DestinationListActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.micoder.globofly.activities.DestinationListActivity" />
+        </activity>
+
+        <activity
+            android:name="com.micoder.globofly.activities.WelcomeActivity"
+            android:label="GloboFly"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
